@@ -11,7 +11,7 @@ if [[ "$CLUSTER" != "" ]]; then  # K8S = Openshift
 fi
 
 helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner-remiks  ./helm \
-  --set gitlabURL="https://gitlab.mycompany" \
+  --set gitlabURL="https://gitlab.mycompany.com" \
   --set gitlabToken="8evRPwiYHx9786qGH4Pa" \
   --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
   --set description="RKE.local - "$(date +%F_%T) \

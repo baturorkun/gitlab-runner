@@ -19,7 +19,6 @@ spec:
       containers:
         - name: {{ .Release.Name }}
           image: gitlab/gitlab-runner:v15.3.0
-          #command: ["sleep","9999999"]
           command: ["/bin/bash", "/scripts/entrypoint"]
           securityContext:
             privileged: true
