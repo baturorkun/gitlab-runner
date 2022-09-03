@@ -2,7 +2,18 @@
 
 Tested on Openshift, RKE, RKE2 and Microk8s
 
-### Example Usage: ( install.sh )
+
+### Install from Remote
+
+```
+helm repo add gitlab-runner https://baturorkun.github.io/gitlab-runner/
+helm repo update
+helm install gitlab-runner  gitlab-runner/gitlab-runner 
+```
+
+### Install from Local
+
+Clone this repository to local and edit install.sh, then Run install.sh
 
 
 ```
@@ -18,7 +29,7 @@ if [[ "$CLUSTER" != "" ]]; then  # K8S = Openshift
     oc adm policy add-scc-to-user privileged -z gitlab-admin
 fi
 
-helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner-remiks  ./helm \
+helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner  ./helm \
   --set gitlabURL="https://gitlab.mycompany" \
   --set gitlabToken="8evRPwiYHx9786qGH4Pa" \
   --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
@@ -26,6 +37,11 @@ helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-run
   --set concurrent="20"
 
 ```
+
+### Uninstall
+
+helm unistall gitlab-runner
+
 
 ### Notes:
 
