@@ -1,0 +1,10 @@
+gitlabURL: "https://gitlab.yourdomain.com"
+
+gitlabToken: "XXXXXXXXXXX"
+
+tagList: "gitlab, runner, k8s, backend"
+
+description: "K8S"
+
+concurrent: 4
+

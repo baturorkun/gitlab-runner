@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+    spec:
+      serviceAccountName: gitlab-admin
+      containers:
+        - name: {{ .Release.Name }}
+          image: gitlab/gitlab-runner:v15.3.0
+          #command: ["sleep","9999999"]
+          command: ["/bin/bash", "/scripts/entrypoint"]
+          securityContext:
+            privileged: true
+          env:
+            - name: GITLAB_URL
+              value: "{{ .Values.gitlabURL }}"
+            - name: REGISTRATION_TOKEN
+              value: "{{ .Values.gitlabToken }}"
+            - name: KUBERNETES_NAMESPACE
+              value: {{ .Release.Namespace }}
+            - name: KUBERNETES_SERVICE_ACCOUNT
+              value: gitlab-admin
+            - name: FF_USE_LEGACY_KUBERNETES_EXECUTION_STRATEGY
+              value: "true"
+            - name: GIT_SSL_NO_VERIFY
+              value: "true"
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: config
+              mountPath: /scripts
+      restartPolicy: Always
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Release.Name }}
