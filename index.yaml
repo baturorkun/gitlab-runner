@@ -1,0 +1,11 @@
+apiVersion: v1
+entries:
+  gitlab-runner:
+  - apiVersion: v2
+    created: "2022-09-03T23:53:59.05232+03:00"
+    digest: 443ab851dd50d21473b62e31a040e91edad31eed99934471021142223f3fd67f
+    name: gitlab-runner
+    urls:
+    - https://github.com/baturorkun/gitlab-runner/gitlab-runner-v0.0.1.tgz
+    version: v0.0.1
+generated: "2022-09-03T23:53:59.051985+03:00"
