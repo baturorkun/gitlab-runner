@@ -10,7 +10,7 @@ if [[ "$CLUSTER" != "" ]]; then  # K8S = Openshift
     oc adm policy add-scc-to-user privileged -z gitlab-admin
 fi
 
-helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner-remiks  ./helm \
+helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner-remiks  ./charts \
   --set gitlabURL="https://gitlab.mycompany.com" \
   --set gitlabToken="8evRPwiYHx9786qGH4Pa" \
   --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
