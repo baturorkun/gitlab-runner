@@ -12,7 +12,7 @@ fi
 
 helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner  ./charts \
   --set gitlabURL="https://gitlab.mycompany.com" \
-  --set gitlabToken="8evRPwiYHx9786qGH4Pa" \
+  --set gitlabToken="XXXXXXXXXXXXXXX" \
   --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
   --set description="RKE.local - "$(date +%F_%T) \
   --set concurrent="20"

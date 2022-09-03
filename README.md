@@ -8,7 +8,12 @@ Tested on Openshift, RKE, RKE2 and Microk8s
 ```
 helm repo add gitlab-runner https://baturorkun.github.io/gitlab-runner/
 helm repo update
-helm install gitlab-runner  gitlab-runner/gitlab-runner 
+helm install gitlab-runner  gitlab-runner/gitlab-runner \
+  --set gitlabURL="https://gitlab.mycompany" \
+  --set gitlabToken="XXXXXXXXXXX" \
+  --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
+  --set description="RKE.local - "$(date +%F_%T) \
+  --set concurrent="20"
 ```
 
 ### Install from Local
@@ -31,7 +36,7 @@ fi
 
 helm upgrade --install  --create-namespace --namespace "${NAMESPACE}" gitlab-runner  ./helm \
   --set gitlabURL="https://gitlab.mycompany" \
-  --set gitlabToken="8evRPwiYHx9786qGH4Pa" \
+  --set gitlabToken="XXXXXXXXXXXXXX" \
   --set tagList='myprj\, build\, backend\, frontend\, test\, e2e' \
   --set description="RKE.local - "$(date +%F_%T) \
   --set concurrent="20"
