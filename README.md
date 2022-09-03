@@ -1,4 +1,4 @@
-# Gitlab Runner for Kubernetes
+# Gitlab Runner HELM for Kubernetes
 
 Tested on Openshift, RKE, RKE2 and Microk8s
 
