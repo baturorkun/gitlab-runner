@@ -1,4 +1,4 @@
-# Gitlab Runner for All Kubernetes
+# Gitlab Runner for Kubernetes
 
 Tested on Openshift, RKE, RKE2 and Microk8s
 
